@@ -30,23 +30,23 @@ public class ProductRepository {
     }
 
     public void removeById(int id) {
-        if (id > 2) {
+        findById(id);
+        if (findById(id) == null) {
             throw new NotFoundException("Element with id: " + id + " not found");
         }
-
-        try {
-            findById(id);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            e.printStackTrace();
-            System.out.println("Ошибка.");
-        }
-
         int length = items.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
         for (Product item : items) {
             if (item.getId() != id) {
-                tmp[index] = item;
+
+
+                try{
+                    tmp[index] = item;
+                } catch (ArrayIndexOutOfBoundsException e){
+                    e.printStackTrace();
+                    System.out.println("Ошибка.");
+                }
                 index++;
             }
         }
