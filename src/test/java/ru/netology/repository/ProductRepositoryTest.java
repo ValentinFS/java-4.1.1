@@ -50,7 +50,7 @@ class ProductRepositoryTest {
         manager.add(book2);
 
         assertThrows(NotFoundException.class, () -> {
-            repo.removeById(3);
+            repo.removeById(5);
         });
     }
 

@@ -30,7 +30,6 @@ public class ProductRepository {
     }
 
     public void removeById(int id) {
-        findById(id);
         if (findById(id) == null) {
             throw new NotFoundException("Element with id: " + id + " not found");
         }
@@ -39,14 +38,7 @@ public class ProductRepository {
         int index = 0;
         for (Product item : items) {
             if (item.getId() != id) {
-
-
-                try{
-                    tmp[index] = item;
-                } catch (ArrayIndexOutOfBoundsException e){
-                    e.printStackTrace();
-                    System.out.println("Ошибка.");
-                }
+                tmp[index] = item;
                 index++;
             }
         }
